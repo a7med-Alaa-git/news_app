@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.bold,
               fontSize: 25,
             ),
+            actionsIconTheme: IconThemeData(color: Colors.black, size: 38),
             systemOverlayStyle: SystemUiOverlayStyle(
               statusBarColor: Colors.white,
               // statusBarIconBrightness: Brightness.dark,

@@ -12,7 +12,17 @@ class HomeView extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         return Scaffold(
-          appBar: AppBar(title: Text('News Cloud')),
+          appBar: AppBar(
+            title: Text('News Cloud'),
+            actions: [
+              IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+              SizedBox(width: 7),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.brightness_4_outlined),
+              ),
+            ],
+          ),
           bottomNavigationBar: BottomNavigationBar(
             items: AppCubit.get(context).items,
             currentIndex: AppCubit.get(context).currentindex,

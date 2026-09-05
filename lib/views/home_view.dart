@@ -5,17 +5,6 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('News', style: TextStyle()),
-            SizedBox(width: 5),
-            Text('Cloud', style: TextStyle(color: Colors.orange)),
-          ],
-        ),
-      ),
-    );
+    return Scaffold(appBar: AppBar(title: Text('News Cloud')));
   }
 }

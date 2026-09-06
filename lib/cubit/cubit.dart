@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app/core/api/api_consumer.dart';
 import 'package:news_app/cubit/states.dart';
 import 'package:news_app/modules/business/business_screen.dart';
 import 'package:news_app/modules/general/general_screen.dart';
@@ -9,9 +10,10 @@ import 'package:news_app/modules/science/science_screen.dart';
 import 'package:news_app/modules/sports/sports_screen.dart';
 
 class AppCubit extends Cubit<AppStates> {
-  AppCubit() : super(InitialState());
+  AppCubit({required this.api}) : super(InitialState());
 
   static AppCubit get(context) => BlocProvider.of(context);
+  final ApiConsumer api;
 
   int currentindex = 0;
   List<Widget> screens = [

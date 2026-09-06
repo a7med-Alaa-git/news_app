@@ -8,8 +8,6 @@ class DioConsumer extends ApiConsumer {
   late dynamic response;
   DioConsumer({required this.dio});
 
-
-
   @override
   Future<dynamic> get(
     String path, {
@@ -67,11 +65,67 @@ class DioConsumer extends ApiConsumer {
                       errorModel: ErrorModel.fromjson(error.response!.data),
                     );
 
+                  case 401:
+                    throw ServerException(
+                      errorModel: ErrorModel.fromjson(error.response!.data),
+                    );
+
+                  case 403:
+                    throw ServerException(
+                      errorModel: ErrorModel.fromjson(error.response!.data),
+                    );
+
+                  case 404:
+                    throw ServerException(
+                      errorModel: ErrorModel.fromjson(error.response!.data),
+                    );
+
+                  case 408:
+                    throw ServerException(
+                      errorModel: ErrorModel.fromjson(error.response!.data),
+                    );
+
+                  case 409:
+                    throw ServerException(
+                      errorModel: ErrorModel.fromjson(error.response!.data),
+                    );
+
+                  case 422:
+                    throw ServerException(
+                      errorModel: ErrorModel.fromjson(error.response!.data),
+                    );
+
+                  case 429:
+                    throw ServerException(
+                      errorModel: ErrorModel.fromjson(error.response!.data),
+                    );
+
+                  case 500:
+                    throw ServerException(
+                      errorModel: ErrorModel.fromjson(error.response!.data),
+                    );
+
+                  case 502:
+                    throw ServerException(
+                      errorModel: ErrorModel.fromjson(error.response!.data),
+                    );
+
+                  case 503:
+                    throw ServerException(
+                      errorModel: ErrorModel.fromjson(error.response!.data),
+                    );
+
+                  case 504:
+                    throw ServerException(
+                      errorModel: ErrorModel.fromjson(error.response!.data),
+                    );
                 }
             }
+          } else {
+            throw ServerException(
+              errorModel: ErrorModel.fromjson({'message': error.toString()}),
+            );
           }
         });
-  
-
   }
 }

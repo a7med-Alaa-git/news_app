@@ -4,10 +4,10 @@ class ErrorModel {
 
   ErrorModel({required this.status, required this.errorMessage});
 
-  factory ErrorModel.fromjson(json) {
+  factory ErrorModel.fromjson(dynamic json) {
     return ErrorModel(
       status: json['status'],
-      errorMessage: json['errorMessage'],
+      errorMessage: json['message'],
     );
   }
 }

@@ -1,3 +1,5 @@
+import 'package:news_app/core/api/end_points.dart';
+
 class ErrorModel {
   final int status;
   final String errorMessage;
@@ -6,8 +8,8 @@ class ErrorModel {
 
   factory ErrorModel.fromjson(dynamic json) {
     return ErrorModel(
-      status: json['status'],
-      errorMessage: json['message'],
+      status: json[ApiKeys.status],
+      errorMessage: json[ApiKeys.errorMessage],
     );
   }
 }

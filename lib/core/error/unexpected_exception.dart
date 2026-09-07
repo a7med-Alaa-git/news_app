@@ -1,8 +1,9 @@
 class UnexpectedException implements Exception {
   final String message;
 
-  UnexpectedException(this.message);
+  UnexpectedException({required this.message});
+}
 
-  @override
-  String toString() => message;
+void handleUnexpectedException(dynamic error) {
+  throw UnexpectedException(message: error.toString());
 }

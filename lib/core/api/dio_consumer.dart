@@ -3,6 +3,7 @@ import 'package:news_app/core/api/api_interceptor.dart';
 import 'package:news_app/core/api/end_points.dart';
 import 'package:news_app/core/error/error_model.dart';
 import 'package:news_app/core/error/exceptions.dart';
+import 'package:news_app/core/error/unexpected_exception.dart';
 
 class DioConsumer {
   final Dio dio;
@@ -41,6 +42,8 @@ class DioConsumer {
         .catchError((error) {
           if (error is DioException) {
             handleDioException(error);
+          } else {
+            throw UnexpectedException('Unexpected error occurred: $error');
           }
         });
   }

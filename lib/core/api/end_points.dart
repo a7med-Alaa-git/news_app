@@ -1,6 +1,6 @@
 class EndPoints {
-  static String baseurl = 'https://newsapi.org/';
-  static String topheadlines = 'v2/top-headlines';
+  static String baseurl = 'https://newsapi.org';
+  static String topheadlines = '/v2/top-headlines';
 }
 
 class ApiKeys {

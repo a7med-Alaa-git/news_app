@@ -10,4 +10,5 @@ class ApiKeys {
   static String apiKey = 'apiKey';
   static const String searchKey = 'q';
   static const String categoryKey = 'category';
+  static const String categoryBusinessValue = 'business';
 }

@@ -1,6 +1,6 @@
 class ArticleModel {
   final String title;
-  final String image;
+  final String? image;
   final String date;
 
   ArticleModel({required this.title, required this.image, required this.date});

@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,13 +26,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: AppBarThemeData(
+          scrolledUnderElevation: 0,
           backgroundColor: Colors.white,
           titleTextStyle: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
             fontSize: 25,
           ),
-          actionsIconTheme: IconThemeData(color: Colors.black, size: 38),
+          actionsIconTheme: IconThemeData(color: Colors.black, size: 30),
           systemOverlayStyle: SystemUiOverlayStyle(
             statusBarColor: Colors.white,
             // statusBarIconBrightness: Brightness.dark,
@@ -44,8 +46,8 @@ class MyApp extends StatelessWidget {
           selectedItemColor: Colors.deepOrange,
         ),
       ),
-      themeMode: ThemeMode.dark,
-      darkTheme: ThemeData(),
+      //themeMode: ThemeMode.dark,
+      //  darkTheme: ThemeData(),
     );
   }
 }

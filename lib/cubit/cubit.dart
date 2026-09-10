@@ -51,7 +51,7 @@ class AppCubit extends Cubit<AppStates> {
         EndPoints.topheadlines,
         queryParameters: {
           ApiKeys.apiKey: ApiKeys.apiKeyValue,
-          ApiKeys.categoryKey: 'science',
+          ApiKeys.categoryKey: ApiKeys.categoryBusinessValue,
         },
       );
       emit(Success());

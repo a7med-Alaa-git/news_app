@@ -24,8 +24,12 @@ class ArticleItem extends StatelessWidget {
                 fit: BoxFit.cover,
                 width: 140,
                 height: 140,
-
-               
+                errorBuilder: (context, error, stackTrace) => Image(
+                  image: NetworkImage(image),
+                  width: 140,
+                  height: 140,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             SizedBox(width: 15),

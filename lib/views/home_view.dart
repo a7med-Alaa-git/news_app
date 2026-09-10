@@ -35,6 +35,11 @@ class HomeView extends StatelessWidget {
             body: AppCubit.get(
               context,
             ).screens[AppCubit.get(context).currentindex],
+            floatingActionButton: FloatingActionButton(
+              onPressed: () {
+                AppCubit.get(context).getData();
+              },
+            ),
           );
         },
       ),

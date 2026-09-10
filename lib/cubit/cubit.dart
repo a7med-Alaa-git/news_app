@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app/core/api/dio_consumer.dart';
+import 'package:news_app/core/api/api_consumer.dart';
+import 'package:news_app/core/api/end_points.dart';
+import 'package:news_app/core/error/exceptions.dart';
 import 'package:news_app/cubit/states.dart';
 import 'package:news_app/modules/business/business_screen.dart';
 import 'package:news_app/modules/general/general_screen.dart';
@@ -12,7 +14,7 @@ class AppCubit extends Cubit<AppStates> {
 
   // ignore: strict_top_level_inference
   static AppCubit get(context) => BlocProvider.of(context);
-  final DioConsumer api;
+  final ApiConsumer api;
 
   int currentindex = 0;
   List<Widget> screens = [
@@ -38,5 +40,21 @@ class AppCubit extends Cubit<AppStates> {
   void changeBottomNavBarIndex(int index) {
     currentindex = index;
     emit(ChangeBottomNavBarIndexState());
+  }
+
+  getData() async {
+    try {
+      emit(Loading());
+      final response = await api.get(
+        EndPoints.topheadlines,
+        queryParameters: {
+          ApiKeys.apiKey: 'ejfheujhfegrugew',
+          ApiKeys.categoryKey: 'se',
+        },
+      );
+      emit(Success());
+    } on ServerException catch (e) {
+      emit(Failure(message: e.errorModel.errorMessage));
+    }
   }
 }

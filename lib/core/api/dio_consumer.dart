@@ -21,6 +21,7 @@ class DioConsumer extends ApiConsumer {
       ),
     );
   }
+
   @override
   Future<dynamic> get(
     String path, {

@@ -4,6 +4,7 @@ import 'package:news_app/core/api/api_consumer.dart';
 import 'package:news_app/core/api/end_points.dart';
 import 'package:news_app/core/error/exceptions.dart';
 import 'package:news_app/cubit/states.dart';
+import 'package:news_app/models/article_model.dart';
 import 'package:news_app/modules/business/business_screen.dart';
 import 'package:news_app/modules/general/general_screen.dart';
 import 'package:news_app/modules/science/science_screen.dart';
@@ -23,6 +24,7 @@ class AppCubit extends Cubit<AppStates> {
     ScienceScreen(),
     SportsScreen(),
   ];
+  List<ArticleModel> business = [];
 
   List<BottomNavigationBarItem> items = [
     BottomNavigationBarItem(
@@ -42,19 +44,26 @@ class AppCubit extends Cubit<AppStates> {
     emit(ChangeBottomNavBarIndexState());
   }
 
-  getData() async {
+  Future<List<ArticleModel>> getData() async {
     try {
       emit(Loading());
       final response = await api.get(
         EndPoints.topheadlines,
         queryParameters: {
-          ApiKeys.apiKey: 'ejfheujhfegrugew',
-          ApiKeys.categoryKey: 'se',
+          ApiKeys.apiKey: ApiKeys.apiKeyValue,
+          ApiKeys.categoryKey: 'science',
         },
       );
       emit(Success());
+      Map<String, dynamic> jsonData = response;
+      List<dynamic> articles = jsonData['articles'];
+      for (var article in articles) {
+        ArticleModel articleModel = ArticleModel.fromjson(article);
+        business.add(articleModel);
+      }
     } on ServerException catch (e) {
       emit(Failure(message: e.errorModel.errorMessage));
     }
+    return business;
   }
 }

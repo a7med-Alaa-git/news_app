@@ -24,6 +24,7 @@ class AppCubit extends Cubit<AppStates> {
     ScienceScreen(),
     SportsScreen(),
   ];
+
   List<ArticleModel> business = [];
 
   List<BottomNavigationBarItem> items = [
@@ -44,7 +45,7 @@ class AppCubit extends Cubit<AppStates> {
     emit(ChangeBottomNavBarIndexState());
   }
 
-  Future<List<ArticleModel>> getData() async {
+  Future<List<ArticleModel>> getBusinessData() async {
     try {
       emit(Loading());
       final response = await api.get(

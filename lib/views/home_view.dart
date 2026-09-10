@@ -11,7 +11,8 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AppCubit(api: DioConsumer(dio: Dio())),
+      create: (context) =>
+          AppCubit(api: DioConsumer(dio: Dio()))..getBusinessData(),
       child: BlocConsumer<AppCubit, AppStates>(
         listener: (context, state) {},
         builder: (context, state) {
@@ -35,11 +36,6 @@ class HomeView extends StatelessWidget {
             body: AppCubit.get(
               context,
             ).screens[AppCubit.get(context).currentindex],
-            floatingActionButton: FloatingActionButton(
-              onPressed: () {
-                AppCubit.get(context).getData();
-              },
-            ),
           );
         },
       ),

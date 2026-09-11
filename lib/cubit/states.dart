@@ -23,3 +23,13 @@ class GetGeneralDataFailureState extends AppStates {
 
   GetGeneralDataFailureState({required this.message});
 }
+
+class GetScienceDataLoadingState extends AppStates {}
+
+class GetScienceDataSuccessState extends AppStates {}
+
+class GetScienceDataFailureState extends AppStates {
+  final String message;
+
+  GetScienceDataFailureState({required this.message});
+}

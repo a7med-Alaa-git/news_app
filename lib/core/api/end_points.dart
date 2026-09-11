@@ -12,4 +12,5 @@ class ApiKeys {
   static const String categoryKey = 'category';
   static const String categoryBusinessValue = 'business';
   static const String categoryGeneralValue = 'general';
+  static const String categoryScienceValue = 'science';
 }

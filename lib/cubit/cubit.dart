@@ -27,6 +27,7 @@ class AppCubit extends Cubit<AppStates> {
 
   List<ArticleModel> business = [];
   List<ArticleModel> general = [];
+  List<ArticleModel> science = [];
 
   List<BottomNavigationBarItem> items = [
     BottomNavigationBarItem(
@@ -46,6 +47,7 @@ class AppCubit extends Cubit<AppStates> {
     if (index == 1) {
       getBusinessData();
     }
+    if (index == 2) {}
     emit(ChangeBottomNavBarIndexState());
   }
 
@@ -93,5 +95,28 @@ class AppCubit extends Cubit<AppStates> {
       emit(GetGeneralDataFailureState(message: e.errorModel.errorMessage));
     }
     return general;
+  }
+
+  Future<List<ArticleModel>> getScienceData() async {
+    emit(GetScienceDataLoadingState());
+    try {
+      final response = await api.get(
+        EndPoints.topheadlines,
+        queryParameters: {
+          ApiKeys.apiKey: ApiKeys.apiKeyValue,
+          ApiKeys.categoryKey: ApiKeys.categoryScienceValue,
+        },
+      );
+      Map<String, dynamic> jsonData = response;
+      List<dynamic> articles = jsonData['articles'];
+      for (var article in articles) {
+        ArticleModel articleModel = ArticleModel.fromjson(article);
+        science.add(articleModel);
+      }
+      emit(GetScienceDataSuccessState());
+    } on ServerException catch (e) {
+      emit(GetScienceDataFailureState(message: e.errorModel.errorMessage));
+    }
+    return science;
   }
 }

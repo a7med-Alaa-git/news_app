@@ -12,7 +12,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          AppCubit(api: DioConsumer(dio: Dio()))..getBusinessData(),
+          AppCubit(api: DioConsumer(dio: Dio()))..getGeneralData(),
       child: BlocConsumer<AppCubit, AppStates>(
         listener: (context, state) {},
         builder: (context, state) {

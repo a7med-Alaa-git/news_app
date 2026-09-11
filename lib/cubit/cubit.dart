@@ -43,6 +43,9 @@ class AppCubit extends Cubit<AppStates> {
 
   void changeBottomNavBarIndex(int index) {
     currentindex = index;
+    if (index == 1) {
+      getBusinessData();
+    }
     emit(ChangeBottomNavBarIndexState());
   }
 

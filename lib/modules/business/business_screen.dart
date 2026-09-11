@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/cubit/cubit.dart';
+import 'package:news_app/cubit/states.dart';
 import 'package:news_app/widgets/articles_list_view.dart';
 
 class BusinessScreen extends StatelessWidget {
@@ -7,10 +9,16 @@ class BusinessScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ArticlesListView(
-      articleList: AppCubit.get(context).business,
-      image:
-          'https://wintradoacademy.com/wp-content/uploads/2024/10/digital-business-1.jpg',
+    return BlocConsumer<AppCubit, AppStates>(
+      listener: (context, state) {
+      },
+      builder: (context, state) {
+        return ArticlesListView(
+          articleList: AppCubit.get(context).business,
+          image:
+              'https://wintradoacademy.com/wp-content/uploads/2024/10/digital-business-1.jpg',
+        );
+      },
     );
   }
 }

@@ -3,11 +3,23 @@ abstract class AppStates {}
 class InitialState extends AppStates {}
 
 class ChangeBottomNavBarIndexState extends AppStates {}
-class Failure extends AppStates{
+
+class GetBusinessDataFailureState extends AppStates {
   final String message;
 
-  Failure({required this.message});
+  GetBusinessDataFailureState({required this.message});
 }
-class Loading extends AppStates{}
-class Success extends AppStates{}
 
+class GetBusinessDataLoadingState extends AppStates {}
+
+class GetBusinessDataSuccessState extends AppStates {}
+
+class GetGeneralDataLoadingState extends AppStates {}
+
+class GetGeneralDataSuccessState extends AppStates {}
+
+class GetGeneralDataFailureState extends AppStates {
+  final String message;
+
+  GetGeneralDataFailureState({required this.message});
+}

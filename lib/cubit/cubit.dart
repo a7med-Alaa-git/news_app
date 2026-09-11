@@ -47,7 +47,9 @@ class AppCubit extends Cubit<AppStates> {
     if (index == 1) {
       getBusinessData();
     }
-    if (index == 2) {}
+    if (index == 2) {
+      getGeneralData();
+    }
     emit(ChangeBottomNavBarIndexState());
   }
 

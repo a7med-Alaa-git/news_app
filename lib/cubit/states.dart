@@ -33,3 +33,12 @@ class GetScienceDataFailureState extends AppStates {
 
   GetScienceDataFailureState({required this.message});
 }
+class GetSportsDataLoadingState extends AppStates {}
+
+class GetSportsDataSuccessState extends AppStates {}
+
+class GetSportsDataFailureState extends AppStates {
+  final String message;
+
+  GetSportsDataFailureState({required this.message});
+}

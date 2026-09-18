@@ -46,7 +46,7 @@ class ArticleItem extends StatelessWidget {
                         articleModel.title,
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 18),
+                        style: Theme.of(context).textTheme.bodyLarge
                       ),
                     ),
                     Text(

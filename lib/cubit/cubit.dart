@@ -60,19 +60,23 @@ class AppCubit extends Cubit<AppStates> {
   Future<List<ArticleModel>> getBusinessData() async {
     try {
       emit(GetBusinessDataLoadingState());
-      final response = await api.get(
-        EndPoints.topheadlines,
-        queryParameters: {
-          ApiKeys.apiKey: ApiKeys.apiKeyValue,
-          ApiKeys.categoryKey: ApiKeys.categoryBusinessValue,
-        },
-      );
-      emit(GetBusinessDataSuccessState());
-      Map<String, dynamic> jsonData = response;
-      List<dynamic> articles = jsonData['articles'];
-      for (var article in articles) {
-        ArticleModel articleModel = ArticleModel.fromjson(article);
-        business.add(articleModel);
+      if (business.isEmpty) {
+        final response = await api.get(
+          EndPoints.topheadlines,
+          queryParameters: {
+            ApiKeys.apiKey: ApiKeys.apiKeyValue,
+            ApiKeys.categoryKey: ApiKeys.categoryBusinessValue,
+          },
+        );
+        emit(GetBusinessDataSuccessState());
+        Map<String, dynamic> jsonData = response;
+        List<dynamic> articles = jsonData['articles'];
+        for (var article in articles) {
+          ArticleModel articleModel = ArticleModel.fromjson(article);
+          business.add(articleModel);
+        }
+      } else {
+        emit(GetBusinessDataSuccessState());
       }
     } on ServerException catch (e) {
       emit(GetBusinessDataFailureState(message: e.errorModel.errorMessage));
@@ -83,19 +87,23 @@ class AppCubit extends Cubit<AppStates> {
   Future<List<ArticleModel>> getGeneralData() async {
     emit(GetGeneralDataLoadingState());
     try {
-      final response = await api.get(
-        EndPoints.topheadlines,
-        queryParameters: {
-          ApiKeys.apiKey: ApiKeys.apiKeyValue,
-          ApiKeys.categoryKey: ApiKeys.categoryGeneralValue,
-        },
-      );
-      emit(GetGeneralDataSuccessState());
-      Map<String, dynamic> jsonData = response;
-      List<dynamic> articles = jsonData['articles'];
-      for (var article in articles) {
-        ArticleModel articleModel = ArticleModel.fromjson(article);
-        general.add(articleModel);
+      if (general.isEmpty) {
+        final response = await api.get(
+          EndPoints.topheadlines,
+          queryParameters: {
+            ApiKeys.apiKey: ApiKeys.apiKeyValue,
+            ApiKeys.categoryKey: ApiKeys.categoryGeneralValue,
+          },
+        );
+        emit(GetGeneralDataSuccessState());
+        Map<String, dynamic> jsonData = response;
+        List<dynamic> articles = jsonData['articles'];
+        for (var article in articles) {
+          ArticleModel articleModel = ArticleModel.fromjson(article);
+          general.add(articleModel);
+        }
+      } else {
+        emit(GetGeneralDataSuccessState());
       }
     } on ServerException catch (e) {
       emit(GetGeneralDataFailureState(message: e.errorModel.errorMessage));
@@ -106,20 +114,24 @@ class AppCubit extends Cubit<AppStates> {
   Future<List<ArticleModel>> getScienceData() async {
     emit(GetScienceDataLoadingState());
     try {
-      final response = await api.get(
-        EndPoints.topheadlines,
-        queryParameters: {
-          ApiKeys.apiKey: ApiKeys.apiKeyValue,
-          ApiKeys.categoryKey: ApiKeys.categoryScienceValue,
-        },
-      );
-      Map<String, dynamic> jsonData = response;
-      List<dynamic> articles = jsonData['articles'];
-      for (var article in articles) {
-        ArticleModel articleModel = ArticleModel.fromjson(article);
-        science.add(articleModel);
+      if (science.isEmpty) {
+        final response = await api.get(
+          EndPoints.topheadlines,
+          queryParameters: {
+            ApiKeys.apiKey: ApiKeys.apiKeyValue,
+            ApiKeys.categoryKey: ApiKeys.categoryScienceValue,
+          },
+        );
+        emit(GetScienceDataSuccessState());
+        Map<String, dynamic> jsonData = response;
+        List<dynamic> articles = jsonData['articles'];
+        for (var article in articles) {
+          ArticleModel articleModel = ArticleModel.fromjson(article);
+          science.add(articleModel);
+        }
+      } else {
+        emit(GetScienceDataSuccessState());
       }
-      emit(GetScienceDataSuccessState());
     } on ServerException catch (e) {
       emit(GetScienceDataFailureState(message: e.errorModel.errorMessage));
     }
@@ -129,19 +141,23 @@ class AppCubit extends Cubit<AppStates> {
   Future<List<ArticleModel>> getSportsData() async {
     emit(GetSportsDataLoadingState());
     try {
-      final response = await api.get(
-        EndPoints.topheadlines,
-        queryParameters: {
-          ApiKeys.apiKey: ApiKeys.apiKeyValue,
-          ApiKeys.categoryKey: ApiKeys.categorySportsValue,
-        },
-      );
-      emit(GetSportsDataSuccessState());
-      Map<String, dynamic> jsonData = response;
-      List<dynamic> articles = jsonData['articles'];
-      for (var article in articles) {
-        ArticleModel articleModel = ArticleModel.fromjson(article);
-        sports.add(articleModel);
+      if (sports.isEmpty) {
+        final response = await api.get(
+          EndPoints.topheadlines,
+          queryParameters: {
+            ApiKeys.apiKey: ApiKeys.apiKeyValue,
+            ApiKeys.categoryKey: ApiKeys.categorySportsValue,
+          },
+        );
+        emit(GetSportsDataSuccessState());
+        Map<String, dynamic> jsonData = response;
+        List<dynamic> articles = jsonData['articles'];
+        for (var article in articles) {
+          ArticleModel articleModel = ArticleModel.fromjson(article);
+          sports.add(articleModel);
+        }
+      } else {
+        emit(GetSportsDataSuccessState());
       }
     } on ServerException catch (e) {
       emit(GetSportsDataFailureState(message: e.errorModel.errorMessage));

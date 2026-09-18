@@ -10,35 +10,33 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          AppCubit(api: DioConsumer(dio: Dio()))..getGeneralData(),
-      child: BlocConsumer<AppCubit, AppStates>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          return Scaffold(
-            appBar: AppBar(
-              title: Text('News Cloud'),
-              actions: [
-                IconButton(onPressed: () {}, icon: Icon(Icons.search)),
-                SizedBox(width: 7),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.brightness_4_outlined),
-                ),
-              ],
-            ),
-            bottomNavigationBar: BottomNavigationBar(
-              items: AppCubit.get(context).items,
-              currentIndex: AppCubit.get(context).currentindex,
-              onTap: AppCubit.get(context).changeBottomNavBarIndex,
-            ),
-            body: AppCubit.get(
-              context,
-            ).screens[AppCubit.get(context).currentindex],
-          );
-        },
-      ),
+    return BlocConsumer<AppCubit, AppStates>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text('News Cloud'),
+            actions: [
+              IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+              SizedBox(width: 7),
+              IconButton(
+                onPressed: () {
+                  AppCubit.get(context).changeMode();
+                },
+                icon: Icon(Icons.brightness_4_outlined),
+              ),
+            ],
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            items: AppCubit.get(context).items,
+            currentIndex: AppCubit.get(context).currentindex,
+            onTap: AppCubit.get(context).changeBottomNavBarIndex,
+          ),
+          body: AppCubit.get(
+            context,
+          ).screens[AppCubit.get(context).currentindex],
+        );
+      },
     );
   }
 }

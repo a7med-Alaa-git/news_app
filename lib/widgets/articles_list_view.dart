@@ -17,7 +17,7 @@ class ArticlesListView extends StatelessWidget {
           ArticleItem(articleModel: articleList[index], image: image),
       separatorBuilder: (context, index) => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Divider(color: Theme.of(context).dividerColor, height: 2),
+        child: Divider(color: Colors.grey, height: 2),
       ),
       itemCount: articleList.length,
     );

@@ -49,7 +49,7 @@ class AppCubit extends Cubit<AppStates> {
       getBusinessData();
     }
     if (index == 2) {
-      getGeneralData();
+      getScienceData();
     }
     if (index == 3) {
       getSportsData();

@@ -10,13 +10,12 @@ class BusinessScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit, AppStates>(
-      listener: (context, state) {
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         return ArticlesListView(
           articleList: AppCubit.get(context).business,
           image:
-              'https://wintradoacademy.com/wp-content/uploads/2024/10/digital-business-1.jpg',
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIMCdG8rNuhnV0vmek1XsbyvG5jvCg0qRFU284-V_8zt9KVlCeTXcVRvA&s=10',
         );
       },
     );

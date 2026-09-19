@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/core/api/api_consumer.dart';
 import 'package:news_app/core/api/end_points.dart';
+import 'package:news_app/core/database/cache/cache_helper.dart';
 import 'package:news_app/core/error/exceptions.dart';
 import 'package:news_app/cubit/states.dart';
 import 'package:news_app/models/article_model.dart';
@@ -166,9 +167,11 @@ class AppCubit extends Cubit<AppStates> {
   }
 
   bool isDark = false;
-  
+
   void changeMode() {
     isDark = !isDark;
-    emit(ChangeThemeModeState());
+    CacheHelper.putData(key: 'isDark', value: isDark).then((value) {
+      emit(ChangeThemeModeState());
+    });
   }
 }

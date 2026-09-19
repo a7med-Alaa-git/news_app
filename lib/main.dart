@@ -4,12 +4,15 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:news_app/core/api/dio_consumer.dart';
+import 'package:news_app/core/database/cache/cache_helper.dart';
 import 'package:news_app/cubit/bloc_observer.dart';
 import 'package:news_app/cubit/cubit.dart';
 import 'package:news_app/cubit/states.dart';
 import 'package:news_app/views/home_view.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await CacheHelper.init();
   Bloc.observer = MyBlocObserver();
   runApp(const MyApp());
 }

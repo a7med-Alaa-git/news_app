@@ -44,3 +44,13 @@ class GetSportsDataFailureState extends AppStates {
 }
 
 class ChangeThemeModeState extends AppStates{}
+
+class GetSearchDataLoadingState extends AppStates {}
+
+class GetSearchDataSuccessState extends AppStates {}
+
+class GetSearchDataFailureState extends AppStates {
+  final String message;
+
+  GetSearchDataFailureState({required this.message});
+}

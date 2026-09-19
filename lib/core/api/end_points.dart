@@ -1,6 +1,7 @@
 class EndPoints {
   static String baseurl = 'https://newsapi.org';
   static String topheadlines = '/v2/top-headlines';
+  static const String searchNewsData = '/v2/everything';
 }
 
 class ApiKeys {

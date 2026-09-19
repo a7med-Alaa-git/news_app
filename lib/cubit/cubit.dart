@@ -182,16 +182,16 @@ class AppCubit extends Cubit<AppStates> {
   List<ArticleModel> search = [];
   Future<List<ArticleModel>> searchData(String value) async {
     try {
+    
       emit(GetSearchDataLoadingState());
       final response = await api.get(
-        EndPoints.topheadlines,
+        EndPoints.searchNewsData,
         queryParameters: {
           ApiKeys.searchKey: value,
           ApiKeys.apiKey: ApiKeys.apiKeyValue,
         },
       );
       emit(GetSearchDataSuccessState());
-
       Map<String, dynamic> jsonData = response;
       List<dynamic> articles = jsonData['articles'];
       for (var article in articles) {

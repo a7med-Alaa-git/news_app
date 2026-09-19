@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/cubit/cubit.dart';
 import 'package:news_app/cubit/states.dart';
+import 'package:news_app/views/search_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -15,7 +16,18 @@ class HomeView extends StatelessWidget {
           appBar: AppBar(
             title: Text('News Cloud'),
             actions: [
-              IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+              IconButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return SearchView();
+                      },
+                    ),
+                  );
+                },
+                icon: Icon(Icons.search),
+              ),
               SizedBox(width: 7),
               IconButton(
                 onPressed: () {

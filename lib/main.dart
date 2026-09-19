@@ -35,6 +35,16 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             home: HomeView(),
             theme: ThemeData(
+              inputDecorationTheme: InputDecorationThemeData(
+                prefixIconColor: Colors.black,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide(color: Colors.blue),
+                ),
+              ),
               scaffoldBackgroundColor: Colors.white,
               appBarTheme: AppBarThemeData(
                 scrolledUnderElevation: 0,
@@ -44,6 +54,7 @@ class MyApp extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   fontSize: 25,
                 ),
+
                 actionsIconTheme: IconThemeData(color: Colors.black, size: 30),
                 systemOverlayStyle: SystemUiOverlayStyle(
                   statusBarColor: Colors.white,
@@ -66,6 +77,17 @@ class MyApp extends StatelessWidget {
             ),
 
             darkTheme: ThemeData(
+              inputDecorationTheme: InputDecorationThemeData(
+                prefixIconColor: Colors.white,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide(color: Colors.white),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide(color: Colors.white),
+                ),
+              ),
               textTheme: TextTheme(
                 bodyLarge: TextStyle(
                   fontSize: 18,
@@ -82,6 +104,7 @@ class MyApp extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   fontSize: 25,
                 ),
+                iconTheme: IconThemeData(color: Colors.white, size: 25),
                 actionsIconTheme: IconThemeData(color: Colors.white, size: 30),
                 systemOverlayStyle: SystemUiOverlayStyle(
                   statusBarColor: HexColor('333739'),

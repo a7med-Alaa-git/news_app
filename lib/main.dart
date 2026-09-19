@@ -14,19 +14,20 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper.init();
   Bloc.observer = MyBlocObserver();
-  runApp(const MyApp());
+  bool? isDark = CacheHelper.getData(key: 'isDark');
+  runApp(MyApp(isDark));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
+  const MyApp(this.isDark, {super.key});
+  final bool? isDark;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          AppCubit(api: DioConsumer(dio: Dio()))..getGeneralData(),
+      create: (context) => AppCubit(api: DioConsumer(dio: Dio()))
+        ..getGeneralData()
+        ..changeMode(isDarkFromShared: isDark),
       child: BlocConsumer<AppCubit, AppStates>(
         listener: (context, state) {},
         builder: (context, state) {
